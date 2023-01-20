@@ -1,7 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ng-container *ngIf="!jokeSettings">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/" (click)="backToJokeSettings()"></ion-back-button>
+    </ion-buttons>
+    </ng-container>
     <ion-title>
-      Tab 1
+      Jokes
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +14,69 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Jokes</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  <ng-container *ngIf="jokeSettings">
+
+    <ion-list>
+      <ion-item>
+        <ion-select interface="popover" placeholder="Select category" (ionChange)="handleCategory($event)">
+          <ion-select-option value="any">Any</ion-select-option>
+          <ion-select-option value="misc">Misc</ion-select-option>
+          <ion-select-option value="programming">Programming</ion-select-option>
+          <ion-select-option value="dark">Dark</ion-select-option>
+          <ion-select-option value="pun">Pun</ion-select-option>
+          <ion-select-option value="spooky">Spooky</ion-select-option>
+          <ion-select-option value="christmas">Christmas</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-select interface="popover" placeholder="Select blacklistFlags" [multiple]="true" (ionChange)="handleBlacklist($event)">
+          <ion-select-option value="nsfw">Nsfw</ion-select-option>
+          <ion-select-option value="religious">Religious</ion-select-option>
+          <ion-select-option value="political">Political</ion-select-option>
+          <ion-select-option value="racist">Racist</ion-select-option>
+          <ion-select-option value="sexist">Sexist</ion-select-option>
+          <ion-select-option value="explicit">Explicit</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-select interface="popover" placeholder="Select type" (ionChange)="handleType($event)">
+          <ion-select-option value="single">Single</ion-select-option>
+          <ion-select-option value="twopart">Two part</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+  </ng-container>
+
+
+
+    <ng-container *ngIf="!jokeSettings">
+      <div *ngFor="let item$ of jokes$">
+
+        <div *ngIf="item$ | async; let joke">
+          <div *ngIf="joke.setup !== ''">
+            <p>{{joke.setup}}</p>
+            <p>{{joke.delivery}}</p>
+
+          </div>
+          <p>{{joke.joke}}</p>
+        </div>
+
+      </div>
+    </ng-container>
+
+  <ion-button (click)="generateJoke()">Generate joke</ion-button>
+
+
 </ion-content>
