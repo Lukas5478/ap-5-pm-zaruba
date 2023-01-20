@@ -1,0 +1,8 @@
+{
+  "name": "ap5pm_zaruba",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "01416712"
+}
