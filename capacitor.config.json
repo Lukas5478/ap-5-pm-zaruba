@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "ap5pm_zaruba",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "io.ionic.starter",
+  "appName": "Joke App",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }

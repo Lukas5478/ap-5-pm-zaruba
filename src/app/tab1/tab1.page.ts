@@ -13,16 +13,15 @@ export class Tab1Page {
   category: string = "";
   blacklistFlag: string[] = [];
   type: string = "";
-
+  SelectCategory: any;
+  SelectBFlag: any;
+  SelectType: any;
 
 
   constructor(
     private apiService: ApiService,
     private linkService: LinkService
-  ) {
-
-
-  }
+  ) {}
 
   handleCategory(e: any){
     this.category = e.detail.value;
@@ -42,8 +41,15 @@ export class Tab1Page {
 
 
   generateLink(){
-
-    this.linkService.saveLinks(this.category,this.blacklistFlag,this.type);
-
+    if(!this.category && !this.type){
+      alert("Please select type and category!");
+      } else if(!this.category) {
+        alert("Please select category!");
+      } else if(!this.type) {
+        alert("Please select type!");
+    } else {
+      this.linkService.saveLinks(this.category,this.blacklistFlag,this.type);
+      this.SelectCategory = this.SelectBFlag = this.SelectType = null;
+    }
   }
 }

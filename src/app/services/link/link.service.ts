@@ -47,7 +47,7 @@ export class LinkService {
 
   async saveLinks(category: string, blacklistFlag: string[], type:string){
     this.link1 = {category: category, blacklistFlag:blacklistFlag,type: type}
-    this._links$.push(this.link1);
+    this._links$.unshift(this.link1);
     await this.storageService.saveData('links', this._links$);
     this.privateLinksSubject.next(this._links$);
   }

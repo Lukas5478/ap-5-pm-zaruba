@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {Link, LinkService} from "../services/link/link.service";
 
-
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -27,5 +26,4 @@ export class Tab2Page {
    await this.linkService.removeLink(index);
    this.links.splice(index,1);
   }
-
 }

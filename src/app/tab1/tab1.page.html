@@ -17,7 +17,7 @@
 
     <ion-list>
       <ion-item>
-        <ion-select interface="popover" placeholder="Select category" (ionChange)="handleCategory($event)">
+        <ion-select [(ngModel)]="SelectCategory" interface="popover" placeholder="Select category" (ionChange)="handleCategory($event)">
           <ion-select-option value="any">Any</ion-select-option>
           <ion-select-option value="misc">Misc</ion-select-option>
           <ion-select-option value="programming">Programming</ion-select-option>
@@ -31,7 +31,7 @@
 
     <ion-list>
       <ion-item>
-        <ion-select interface="popover" placeholder="Select censorship" [multiple]="true" (ionChange)="handleBlacklist($event)">
+        <ion-select [(ngModel)]="SelectBFlag" interface="popover" placeholder="Select censorship" [multiple]="true" (ionChange)="handleBlacklist($event)">
           <ion-select-option value="nsfw">Nsfw</ion-select-option>
           <ion-select-option value="religious">Religious</ion-select-option>
           <ion-select-option value="political">Political</ion-select-option>
@@ -44,14 +44,14 @@
 
     <ion-list>
       <ion-item>
-        <ion-select interface="popover" placeholder="Select type" (ionChange)="handleType($event)">
+        <ion-select [(ngModel)]="SelectType" interface="popover" placeholder="Select type" (ionChange)="handleType($event)">
           <ion-select-option value="single">Single</ion-select-option>
-          <ion-select-option value="twopart">Two part</ion-select-option>
+          <ion-select-option value="two-part">Two part</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
 
-  <ion-button color="success" expand="full" (click)="generateLink()">Generate link</ion-button>
+  <ion-button routerLink="/tabs/tab2" style="margin:1em 2em 1em 2em" color="success" expand="block" (click)="generateLink()">Generate link</ion-button>
 
 
 </ion-content>

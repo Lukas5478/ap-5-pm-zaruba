@@ -25,7 +25,7 @@ export class JokePrintPage implements OnInit {
   }
 
   generateJoke(){
-    this.jokes$.push(this.apiService.getJoke(this.link.category,this.link.blacklistFlag,this.link.type))
+    this.jokes$.unshift(this.apiService.getJoke(this.link.category,this.link.blacklistFlag,this.link.type))
   }
 
 }

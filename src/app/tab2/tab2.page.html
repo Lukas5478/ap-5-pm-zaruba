@@ -18,14 +18,14 @@
       <ion-item-sliding>
         <ng-container *ngIf="item.blacklistFlag.length === 0; else bFlagExists">
           <ion-item>
-            <ion-label class="ion-text-wrap" style="white-space: pre-line" routerLink="/joke-print" (click)="openJoke(item)">
+            <ion-label class="ion-text-wrap" routerLink="/joke-print" (click)="openJoke(item)">
               Category:{{item.category}}<br>
               type:{{item.type}}</ion-label>
           </ion-item>
         </ng-container>
         <ng-template #bFlagExists>
           <ion-item>
-            <ion-label class="ion-text-wrap" style="white-space: pre-line" routerLink="/joke-print" (click)="openJoke(item)">
+            <ion-label class="ion-text-wrap" routerLink="/joke-print" (click)="openJoke(item)">
               Category:{{item.category}}<br>
               Censored:{{item.blacklistFlag}}<br>
               type:{{item.type}}</ion-label>

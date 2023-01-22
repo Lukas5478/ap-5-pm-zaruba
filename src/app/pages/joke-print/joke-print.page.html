@@ -8,16 +8,31 @@
 </ion-header>
 
 <ion-content>
-  <ng-container *ngFor="let item$ of jokes$">
 
+  <ng-container *ngFor="let item$ of jokes$">
     <div *ngIf="item$ | async; let joke">
-      <div *ngIf="joke.setup !== ''">
-        <p>{{joke.setup}}</p>
-        <p>{{joke.delivery}}</p>
-      </div>
-      <p>{{joke.joke}}</p>
+      <ng-container *ngIf="joke.setup; else singleType">
+          <ion-item>
+            <ion-label style="white-space: pre-line">
+              {{joke.setup}}
+              <br>
+              {{joke.delivery}}
+            </ion-label>
+          </ion-item>
+      </ng-container>
+      <ng-template #singleType>
+          <ion-item>
+            <ion-label style="white-space: pre-line">
+              {{joke.joke}}
+            </ion-label>
+          </ion-item>
+      </ng-template>
     </div>
   </ng-container>
 
-  <ion-button color="success" expand="full" (click)="generateJoke()">Generate joke</ion-button>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button style="margin:1em 2em 1em 2em" color="success" expand="block" (click)="generateJoke()">Generate joke</ion-button>
+  </ion-toolbar>
+</ion-footer>
