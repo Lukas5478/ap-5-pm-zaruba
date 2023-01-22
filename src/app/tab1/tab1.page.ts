@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {ApiService} from "../services/api/api.service";
-import {JokeParam} from "../models/joke.model";
-import {Observable} from "rxjs";
+import {Link, LinkService} from "../services/link/link.service";
 
 @Component({
   selector: 'app-tab1',
@@ -10,15 +9,20 @@ import {Observable} from "rxjs";
 })
 export class Tab1Page {
 
-  jokes$: Observable<JokeParam>[] = [];
+
   category: string = "";
   blacklistFlag: string[] = [];
   type: string = "";
-  jokeSettings: boolean = true;
+
+
 
   constructor(
-    private apiService: ApiService
-  ) {}
+    private apiService: ApiService,
+    private linkService: LinkService
+  ) {
+
+
+  }
 
   handleCategory(e: any){
     this.category = e.detail.value;
@@ -32,13 +36,14 @@ export class Tab1Page {
     this.type = e.detail.value;
   }
 
-  backToJokeSettings(){
-    this.jokeSettings = true;
+  openJoke(link: Link){
+    this.linkService.linkDetail = link;
   }
 
-  generateJoke(){
-    this.jokeSettings = false;
-    this.jokes$.push(this.apiService.getJoke(this.category,this.blacklistFlag,this.type));
-  }
 
+  generateLink(){
+
+    this.linkService.saveLinks(this.category,this.blacklistFlag,this.type);
+
+  }
 }

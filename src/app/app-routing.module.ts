@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },  {
+    path: 'joke-print',
+    loadChildren: () => import('./pages/joke-print/joke-print.module').then( m => m.JokePrintPageModule)
   },
+
 
 
 
