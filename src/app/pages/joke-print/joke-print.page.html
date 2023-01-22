@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Joke generation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngFor="let item$ of jokes$">
+
+    <div *ngIf="item$ | async; let joke">
+      <div *ngIf="joke.setup !== ''">
+        <p>{{joke.setup}}</p>
+        <p>{{joke.delivery}}</p>
+      </div>
+      <p>{{joke.joke}}</p>
+    </div>
+  </ng-container>
+
+  <ion-button color="success" expand="full" (click)="generateJoke()">Generate joke</ion-button>
+</ion-content>
