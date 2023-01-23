@@ -24,6 +24,5 @@ export class Tab2Page {
 
   async removeLink(index:any){
    await this.linkService.removeLink(index);
-   this.links.splice(index,1);
   }
 }

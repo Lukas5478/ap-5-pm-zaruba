@@ -51,7 +51,7 @@
       </ion-item>
     </ion-list>
 
-  <ion-button routerLink="/tabs/tab2" style="margin:1em 2em 1em 2em" color="success" expand="block" (click)="generateLink()">Generate link</ion-button>
+  <ion-button style="margin:1em 2em 1em 2em" color="success" expand="block" (click)="generateLink()" [routerLink]="routeTo? '/tabs/tab2' : []">Generate link</ion-button>
 
 
 </ion-content>

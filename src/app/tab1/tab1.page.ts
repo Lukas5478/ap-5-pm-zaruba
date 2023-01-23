@@ -16,7 +16,7 @@ export class Tab1Page {
   SelectCategory: any;
   SelectBFlag: any;
   SelectType: any;
-
+  routeTo: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -25,6 +25,7 @@ export class Tab1Page {
 
   handleCategory(e: any){
     this.category = e.detail.value;
+    this.isEmpty();
   }
 
   handleBlacklist(e: any){
@@ -33,23 +34,31 @@ export class Tab1Page {
 
   handleType(e: any){
     this.type = e.detail.value;
+    this.isEmpty();
   }
 
   openJoke(link: Link){
     this.linkService.linkDetail = link;
   }
 
+  isEmpty(){
+    this.routeTo = !!(this.category && this.type);
+  }
 
   generateLink(){
     if(!this.category && !this.type){
       alert("Please select type and category!");
+
       } else if(!this.category) {
         alert("Please select category!");
+
       } else if(!this.type) {
         alert("Please select type!");
+
     } else {
       this.linkService.saveLinks(this.category,this.blacklistFlag,this.type);
       this.SelectCategory = this.SelectBFlag = this.SelectType = null;
+
     }
   }
 }
